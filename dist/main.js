@@ -271,7 +271,7 @@ function init() {
     // Create the camera that allows us to view into the scene.
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
     camera.up.set(0, 0, 1);
-    camera.position.set( 0, 20, 70 );
+    camera.position.set( 0, 15, 30 );
     // Create controls that allows a user to move the scene with a mouse.
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.minDistance = 0.2;
@@ -352,11 +352,11 @@ class AsteroidFamily extends THREE.Points {
         geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
         geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
         geometry.computeBoundingSphere();
-        const sprite = new THREE.TextureLoader().load( './img/asteroid_sprite.png' );
+        const sprite = new THREE.TextureLoader().load( './img/circle.png' );
         // TODO: to change size and texture need to loop and create array of points
         // https://stackoverflow.com/questions/53786863/points-opacity-size-within-three-js
         const material = new THREE.PointsMaterial( { size: 0.15, map: sprite, vertexColors: true,
-            blending: THREE.AdditiveBlending, transparent: true, alphaTest: 0.5} );
+            blending: THREE.AdditiveBlending, transparent: true, alphaTest: 0.5, depthTest: true} );
 
         this.geometry = geometry;
         this.material = material;
