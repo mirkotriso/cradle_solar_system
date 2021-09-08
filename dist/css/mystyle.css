@@ -484,11 +484,11 @@ html, body {
 /* ICONS */
 @font-face {
     font-family: 'space-icons';
-    src:  url('../dist/fonts/icomoon.eot?1gzdrb');
-    src:  url('../dist/fonts/icomoon.eot?1gzdrb#iefix') format('embedded-opentype'),
-      url('../dist/fonts/icomoon.ttf?1gzdrb') format('truetype'),
-      url('../dist/fonts/icomoon.woff?1gzdrb') format('woff'),
-      url('../dist/fonts/icomoon.svg?1gzdrb#icomoon') format('svg');
+    src:  url('../styles/fonts/icomoon.eot');
+    src:  url('../styles/fonts/icomoon.eot') format('embedded-opentype'),
+      url('../styles/fonts/icomoon.ttf') format('truetype'),
+      url('../styles/fonts/icomoon.woff') format('woff'),
+      url('../styles/fonts/icomoon.svg') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
