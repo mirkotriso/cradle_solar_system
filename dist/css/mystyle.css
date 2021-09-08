@@ -1,0 +1,661 @@
+/* PAGE LAYOUT */
+
+* {
+  font-family: 'Roboto', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.main-canvas {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  transform: translate(-5%, -5%);
+}
+
+.toggle_button {
+  width: 150px;
+  height: 35px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.toggle_button ul li a {
+  display: flex;
+  height: 35px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle_button ul li a.share_btn {
+  justify-content: center;
+} 
+
+.toggle_button ul li a.share_btn .text {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-right: 15px;
+  color: #768B99;
+}
+
+.toggle_button ul li a.share_btn .icon {
+  width: 25px;
+  height: 25px;
+  background: #768B99;
+  display: inline-block;
+  border-radius: 50%;
+  transition: all 1s ease;
+  position: relative;
+}
+
+.toggle_button ul li a .icon i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.toggle_button ul li a.sm .icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-left: 2.5px;
+}
+
+.toggle_button ul li a .text {
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.toggle_button ul li a.facebook .icon {
+  background: #3b5998;
+}
+
+.toggle_button ul li a.facebook .text {
+  color: #3b5998;
+}
+
+.toggle_button ul li a.instagram .icon {
+  background: #3b5998;
+}
+
+.toggle_button ul li a.instagram .text {
+  color: #3b5998;
+}
+
+.toggle_button ul li a.linkedin .icon {
+  background: #3b5998;
+}
+
+.toggle_button ul li a.linkedin .text {
+  color: #3b5998;
+}
+
+.toggle_button.active {
+  height: 150px;
+}
+
+.toggle_button.active ul li a.share_btn .icon {
+  transform: rotate(45deg);
+}
+
+.toggle_button ul li a.sm {
+  visibility: hidden;
+}
+
+.toggle_button.active ul li a.sm {
+  visibility: visible;
+  transition-delay: 0.2s;
+}
+
+.footer {
+    height: 1em;
+    background-color: black;
+    color: #E2DCD9;
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    text-align: center;
+    font-size: small;
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+    /* display: inline-block; */
+}
+
+
+.table {
+  overflow:hidden;
+  left:4em;
+  z-index:5;
+  transition: all 0.1s ease-in-out;
+  top: 0;
+  position: fixed;
+  width:10em;
+  height:100%;
+  display: none;
+}
+
+.table .contact-bar {
+  background: #E2DCD9;
+  padding: 0;
+  margin: 0;
+  width: 180px;
+}
+
+.table .contact-bar a {
+  height: 4em;
+  line-height: 4em;
+  text-align:center;
+  color: #2F2B34;
+  text-decoration:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table ul li a {
+  display: flex;
+  height: 35px;
+  align-items: center;
+}
+
+.table ul li a:hover {
+  background: #768B99;
+  color: #E2DCD9;
+}
+
+.table ul li a .icon {
+  width: 30px;
+  height: 30px;
+  background: #2F2B34;
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  margin-left: 15px;
+}
+
+.table ul li a .text{
+  font-size: 1em;
+  margin-right: 15px;
+  color: #2F2B34;
+  margin-left: 10px;
+}
+
+.table ul li a:hover .icon {
+  background-color: #E2DCD9;
+}
+
+.table ul li a:hover .icon i {
+  color: #768B99;
+}
+
+.table ul li a:hover .text {
+  color: #E2DCD9;
+}
+
+.table ul li a .icon i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+/* SIDE MENU STYILING */
+
+.menu, .menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #E2DCD9;
+    z-index:10;  
+    overflow:hidden;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+}
+.menu li a{
+  display: block;
+  text-indent: -500em;
+  height: 4em;
+  width: 4em;
+  line-height: 4em;
+  text-align:center;
+  color: #2F2B34;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.1s ease-in-out;
+}
+.menu li a:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-indent: 0em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4em;
+}
+.menu li a.show-orbit:before {
+  font-family: "space-icons";
+  content: "\e90a";
+  font-size: 2em;
+  stroke-width: 0pt;
+}
+/* .menu li a.archive:before {
+  content: "\f187";
+} */
+.menu li a.play:before {
+  content: "\f144";
+}
+.menu li a.contact:before {
+  content: "\f2bb";
+}
+.menu li a.pause:before {
+  content: "\f28b";
+}
+.menu li a.home:before {
+  content: "\f753";
+}
+.menu-bar li a:hover{
+  background: #768B99;
+  color: #E2DCD9;
+}
+.menu li a:hover {
+  background: #768B99;
+  color: #E2DCD9;
+}
+.menu li:first-child a {
+  background: #2F2B34;
+  color: #E2DCD9;
+}
+.menu-bar{
+    overflow:hidden;
+    left:4em;
+    z-index:5;
+    width:10em;
+    height:100%;
+    transition: all 0.1s ease-in-out;
+    display: none;
+}
+.menu-bar li a{
+  display: block;
+  height: 3em;
+  line-height: 3em;
+  text-align:center;
+  color: #2F2B34;
+  text-decoration:none;  
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.1s ease-in-out;
+}
+.menu-bar li:first-child a{
+    height:4em;
+    background: #2F2B34;
+    color: #E2DCD9;    
+    line-height:4em
+}
+
+.para{
+    color:#033f72;
+    padding-left:100px;
+    font-size:3em;
+    margin-bottom:20px;
+}
+
+/* .open{
+    width:10em;
+    height:100%;
+} */
+
+@media all and (max-width: 500px) {
+    .container{
+        margin-top:100px;
+    }
+    .menu{
+        height:5em;
+        width:100%;
+    }
+    .menu li{
+        display:inline-block;
+        float: left;
+    }
+    .menu-bar li a{
+        width:100%;
+    }
+    .menu-bar{
+        width:100%;
+        left:0;
+        height:0;
+    }
+    .table ul li a{
+      width:100%;
+    }
+    .table{
+      width:100%;
+      left:0;
+      height:0;
+    }
+    .open{
+        width:100%;
+        height:auto;
+    }
+    .para{
+      padding-left:5px;
+}  
+}
+@media screen and (max-height: 34em){
+  .menu li,
+  .menu-bar {
+    font-size:70%;
+  }
+  .table {
+    font-size: 70%;
+  }
+  .table ul li a .icon {
+      width: 22px;
+      height: 22px;
+  }
+
+  .toggle_button ul li a {
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+  .toggle_button ul li a .text {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .toggle_button ul li a.sm {
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+  .toggle_button ul li a.sm .icon {
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  .toggle_button ul li a.share_btn .text {
+    display: none;
+  }
+  .toggle_button {
+    width: 35px;
+    padding: 0;
+  }
+  
+
+}
+@media screen and (max-height: 34em) and (max-width: 500px){
+  .menu{
+        height:auto;
+    }
+
+  .menu-bar{
+      overflow:hidden;
+      top:4em;
+      z-index:5;
+      width:100%;
+      height:auto;
+      transition: all 0.1s ease-in-out;
+      display: none;
+  }
+
+  .table{
+    overflow:hidden;
+    top:4em;
+    z-index:5;
+    width:100%;
+    height:auto;
+    transition: all 0.1s ease-in-out;
+    display: none;
+  }
+
+  .table .contact-bar a {
+    height: 3em;
+    line-height: 3em;
+} 
+
+}
+
+.info-box {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #E2DCD9;
+  height: auto;
+  min-width: 20em;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.info-box h2 {
+  font-size: 16px;
+  text-align: center;
+  padding-top: 5px;
+  vertical-align: center;
+}
+
+.table-container {
+  overflow: auto;
+}
+
+.info-table {
+  text-align: center;
+  border: 1px;
+  padding: 5px;
+  text-overflow: clip;
+}
+
+.info-table tr td {
+  width: 50px;
+  height: 25px;
+  text-overflow: clip;
+  padding: 5px;
+  overflow: hidden;
+}
+
+
+/* ICONS */
+@font-face {
+    font-family: 'space-icons';
+    src:  url('../dist/fonts/icomoon.eot?1gzdrb');
+    src:  url('../dist/fonts/icomoon.eot?1gzdrb#iefix') format('embedded-opentype'),
+      url('../dist/fonts/icomoon.ttf?1gzdrb') format('truetype'),
+      url('../dist/fonts/icomoon.woff?1gzdrb') format('woff'),
+      url('../dist/fonts/icomoon.svg?1gzdrb#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'space-icons' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-venus:before {
+    content: "\e900";
+  }
+  .icon-earth:before {
+    content: "\e901";
+  }
+  .icon-neptune:before {
+    content: "\e902";
+  }
+  .icon-mars:before {
+    content: "\e903";
+  }
+  .icon-jupiter:before {
+    content: "\e904";
+  }
+  .icon-moon:before {
+    content: "\e905";
+  }
+  .icon-sun:before {
+    content: "\e906";
+  }
+  .icon-saturn:before {
+    content: "\e907";
+  }
+  .icon-uranus:before {
+    content: "\e908";
+  }
+  .icon-death-star:before {
+    content: "\e909";
+  }
+  .icon-black-hole:before {
+    content: "\e90a";
+  }
+  .icon-meteorite:before {
+    content: "\e90b";
+  }
+  .icon-planetary:before {
+    content: "\e90c";
+  }
+  .icon-galaxy:before {
+    content: "\e90d";
+  }
+  .icon-footprints-on-the-moon:before {
+    content: "\e90e";
+  }
+  .icon-sputnik:before {
+    content: "\e90f";
+  }
+  .icon-astronaut:before {
+    content: "\e910";
+  }
+  .icon-star:before {
+    content: "\e911";
+  }
+  .icon-extraterrestrial-head:before {
+    content: "\e912";
+  }
+  .icon-ufo-picture:before {
+    content: "\e913";
+  }
+  .icon-spaceport:before {
+    content: "\e914";
+  }
+  .icon-iss:before {
+    content: "\e915";
+  }
+  .icon-sputnik1:before {
+    content: "\e916";
+  }
+  .icon-sputnik2:before {
+    content: "\e917";
+  }
+  .icon-module:before {
+    content: "\e918";
+  }
+  .icon-sputnik3:before {
+    content: "\e919";
+  }
+  .icon-mars-rover:before {
+    content: "\e91a";
+  }
+  .icon-shuttle:before {
+    content: "\e91b";
+  }
+  .icon-moonwalker:before {
+    content: "\e91c";
+  }
+  .icon-rocket:before {
+    content: "\e91d";
+  }
+  .icon-shuttle1:before {
+    content: "\e91e";
+  }
+  .icon-ufo:before {
+    content: "\e91f";
+  }
+  .icon-rocket-start:before {
+    content: "\e920";
+  }
+  .icon-capsule:before {
+    content: "\e921";
+  }
+  .icon-capsule1:before {
+    content: "\e922";
+  }
+  .icon-lander:before {
+    content: "\e923";
+  }
+  .icon-capsule-parachute:before {
+    content: "\e924";
+  }
+  .icon-lander1:before {
+    content: "\e925";
+  }
+  .icon-telescope:before {
+    content: "\e926";
+  }
+  .icon-telescope1:before {
+    content: "\e927";
+  }
+  .icon-radar:before {
+    content: "\e928";
+  }
+  .icon-radar1:before {
+    content: "\e929";
+  }
+  .icon-astronaut-and-flag:before {
+    content: "\e92a";
+  }
+  .icon-extraterrestrial:before {
+    content: "\e92b";
+  }
+  .icon-astronaut1:before {
+    content: "\e92c";
+  }
+  .icon-blaster1:before {
+    content: "\e92d";
+  }
+  .icon-rocket1:before {
+    content: "\e92e";
+  }
+  .icon-ufo1:before {
+    content: "\e92f";
+  }
+  .icon-blaster:before {
+    content: "\e930";
+  }
+  .icon-ufo-and-cow:before {
+    content: "\e931";
+  }

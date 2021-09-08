@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CRADLE - Asteroid visualisation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="https://bossanova.uk/jspreadsheet/v3/jexcel.js"></script> -->
+        <!-- <script src="https://jsuites.net/v3/jsuites.js"></script> -->
+        <link rel="stylesheet" href="/styles/fontawesome-5.15.3/css/all.css">
+        <link rel="stylesheet" href="./css/mystyle.css">
+        <!-- <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v3/jexcel.css" type="text/css" /> -->
+        <!-- <link rel="stylesheet" href="https://jsuites.net/v3/jsuites.css" type="text/css" /> -->
+    </head>
+    <body>
+        <div id="main-canvas" class='main-canvas'></div>
+
+        <script src="js/dat.gui.min.js"></script>
+        <script src="js/three.js"></script>
+        <script src="js/OrbitControls.js"></script>
+        <script src="main.js"></script>
+
+        <ul class="menu">
+
+            <li title="home"><a href="#" class="menu-button home">menu</a></li>
+            
+            <li title="show-orbit"><a id='show-orbit' href="#" class="show-orbit">Show orbit</a></li>
+            <li title="play"><a id='play' href="#" class="play">Play</a></li>
+            <li title="pause"><a id='pause' href="#" class="pause">Pause</a></li>
+            <!-- <li title="archive"><a href="#" class="archive">Archive</a></li> -->
+            <li title="contact"><a href="#" class="contact">Contact</a></li>
+
+        </ul>
+
+        <div class="info-box" id="infoBox">
+            <h2 id="infoBoxTitle">Solar System Asteroids</h2>
+            <!-- <p id="info-description">
+                Description.
+            </p> -->
+            <!-- <div class="table-container">
+                <table class="info-table" id="info-table"> -->
+                    <!-- the table is populated with asteroid data using javascript. -->
+                <!-- </table>
+            </div> -->
+            <!-- <div id='my-spreadsheet'></div> -->
+        </div>
+          
+        <div class="table" id='contact-table'>
+        <ul class="contact-bar">
+            <li><a href="#" class="contact-email">
+                <span class="icon">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="text">Email</span>
+            </a></li>
+            <li><a href="#" class="contact-linkedin">
+                <span class="icon">
+                    <i class="fab fa-linkedin"></i>
+                </span>
+                <span class="text">Linkedin</span>
+            </a></li>
+        </ul>
+        </div>
+
+        <ul class="menu-bar" id="menu-bar">
+            <li><a href="#" class="menu-button">Asteroid families</a></li>
+            <li><a id='all' href="#">All</a></li>
+            <li><a id='atens' href="#">Atens</a></li>
+            <li><a id='amors' href="#">Amors</a></li>
+            <li><a id='apollos' href="#">Apollos</a></li>
+            <li><a id='neos' href="#">NEOs</a></li>
+            <li><a id='mars-crossing' href="#">Mars Crossing</a></li>
+            <li><a id='main-belt' href="#">Main Belt</a></li>
+            <li><a id='inner-belt' href="#">Inner Belt</a></li>
+            <li><a id='outer-belt' href="#">Outer Belt</a></li>
+            <li><a id='trojans' href="#">Trojans</a></li>
+        </ul>
+
+        <div class="wrapper">
+            <div class="toggle_button">
+                <ul>
+                    <li><a href="#" class='share_btn'>
+                        <span class="text">SHARE</span>
+                        <span class="icon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a></li>
+                    <li><a class='sm facebook' href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" target="_blank" rel="noopener">
+                        <span class="icon">
+                            <i class="fab fa-facebook"></i>
+                        </span>
+                        <span class="text">Facebook</span>
+                    </a></li>
+                    <li><a href="#" class='sm instagram'>
+                        <span class="icon">
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                        <span class="text">Instagram</span>
+                    </a></li>
+                    <li><a href="#" class='sm linkedin'>
+                        <span class="icon">
+                            <i class="fab fa-linkedin"></i>
+                        </span>
+                        <span class="text">Linkedin</span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+
+    </body>
+
+    <script>
+
+        // jexcel(document.getElementById('my-spreadsheet'), {
+        //     url:'./assets/amors.json',
+        //     columns:[
+        //         { title:'Model', width:300 },
+        //         { title:'Price', width:80 },
+        //         { title:'Model', width:100 }
+        //     ]
+        // });
+
+        $(document).ready(function(){
+            $('.menu-button').click(function(event){
+                event.stopPropagation();
+                $(".menu-bar").toggle();
+                if ($(event.target).closest(".table").length == 0) {
+                    $(".table").hide();
+                }
+            });
+            $(".menu-bar").on("click", function (event) {
+                event.stopPropagation();
+            });
+        });
+
+        $(document).ready(function(){
+            $('.contact').click(function(event){
+                event.stopPropagation();
+                $(".table").toggle();
+                if ($(event.target).closest(".menu-bar").length == 0) {
+                    $(".menu-bar").hide();
+                }
+            });
+            $(".table").on("click", function (event) {
+                event.stopPropagation();
+            });
+        });
+
+        $(document).on("click", function () {
+            $(".table").hide();
+            $(".menu-bar").hide();
+        });
+
+        // share button
+        var share_btn = document.querySelector(".share_btn");
+        var toggle_button = document.querySelector(".toggle_button");
+
+        share_btn.addEventListener("click", function () {
+            toggle_button.classList.toggle("active");
+        });
+
+    </script>
+
+</html>
