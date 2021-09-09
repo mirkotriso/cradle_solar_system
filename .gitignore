@@ -1,6 +1,6 @@
-node_modules/
 .vscode/
-dist/assets/asteroid_database_named.csv
+node_modules/
+asteroid_database/database.csv
 main_old.js
 process_database.py
 start_localhost.py
