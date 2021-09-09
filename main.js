@@ -56,9 +56,9 @@ RAD2DEG = 180 / Math.PI;
  * INITIALISE TIME OF THE SIMULATION AND CLOCK
  */ 
 var clock = new THREE.Clock();
-const JD0 = 20001;  // starting Julian date of the simulation
+const JD0 = 2451545.0 //  20001;  // starting Julian date of the simulation
 var jd = JD0;  // julian data --> used as the time pf the simulation
-const JDPS = 40;  // julian years per second of simulation. Standard for the simulation
+const JDPS = 40;  // julian days per second of simulation. Standard for the simulation
 
 /**
  * VISUALISATION SETTINGS
@@ -174,7 +174,6 @@ document.getElementById("menu-bar").addEventListener("click",function(e) {
     } else if (e.target.innerText == 'All') {
         $("#info-table").html("");
     }
-    console.log(tableData)
     constructTable(tableData, "#info-table");
 });
 
@@ -474,6 +473,7 @@ class Planet extends THREE.Object3D {
  */
  function getAsteroidPosition(ephem, jd) {
     dj = jd - ephem.epoch;
+
     // compute mean motion if not present (in deg / day)
     if (!ephem.hasOwnProperty('n')) {
         n = 1 / Math.sqrt(ephem.a**3);
@@ -482,8 +482,8 @@ class Planet extends THREE.Object3D {
     }
 
     if (ephem.hasOwnProperty('ma')) {
-        M0 = ephem.ma;
-    } else if (ephem.hasOwnProperty('mlong')) {
+        M0 = ephem.ma; }
+    else if (ephem.hasOwnProperty('mlong')) {
         M0 = ephem.mlong - ephem.w - ephem.om;
     } else{
         throw 'Mean anomaly or mean longitude must be defined!';
@@ -530,23 +530,30 @@ function kep2car (M, ephem) {
     b = Math.sqrt(G**2 + Q**2);
     c = Math.sqrt(H**2 + R**2);
 
-    xx = (Math.cos(Mrad) - ephem.e);
-    yy = Math.sin(Mrad);
-    E = Math.atan(yy / xx);
-    if (xx < 0){
-        if (yy < 0) {
-            E = E - Math.PI;
-        } else {
-            E = E + Math.PI;
-        }
+    if (ephem.e < 0.2) {
+        xx = (Math.cos(Mrad) - ephem.e);
+        yy = Math.sin(Mrad);
+        E = Math.atan2(yy, xx);}
+    else {
+        E0 = Mrad;
+        eps = 100000;
+        while (eps > 0.001) {
+            E = E0 + (Mrad + ephem.e * Math.sin(E0) - E0) / (1 - ephem.e * Math.cos(E0)); 
+            eps = Math.abs(E - E0);
+            E0 = E;}
     }
+
     nu = 2 * Math.atan( Math.sqrt( (1 + ephem.e) / (1 - ephem.e) ) * Math.tan(E / 2) );
+    if (nu < 0) {
+        nu = nu + 2 * Math.PI;
+    }
     r = ephem.a * (1 - ephem.e**2) / (1 + ephem.e * Math.cos(nu))
 
     xeq = r * a * Math.sin(A + wrad + nu);
     yeq = r * b * Math.sin(B + wrad + nu);
     zeq = r * c * Math.sin(C + wrad + nu);
 
+    // put it back on the ecliptic plane
     yecl = yeq * cecl + zeq * secl;
     zecl = -yeq * secl + zeq * cecl;
 
