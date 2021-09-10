@@ -87,19 +87,19 @@
                             <i class="fas fa-plus"></i>
                         </span>
                     </a></li>
-                    <li><a class='sm facebook' href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" target="_blank" rel="noopener">
+                    <li><a class='sm facebook' href="#" target="_blank" rel="noopener">
                         <span class="icon">
                             <i class="fab fa-facebook"></i>
                         </span>
                         <span class="text">Facebook</span>
                     </a></li>
-                    <li><a href="#" class='sm instagram'>
+                    <li><a class='sm twitter' href="#" target="_blank" rel="noopener">
                         <span class="icon">
-                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-twitter"></i>
                         </span>
-                        <span class="text">Instagram</span>
+                        <span class="text">Twitter</span>
                     </a></li>
-                    <li><a href="#" class='sm linkedin'>
+                    <li><a href="#" class='sm linkedin' target="_blank" rel="noopener">
                         <span class="icon">
                             <i class="fab fa-linkedin"></i>
                         </span>
@@ -161,6 +161,26 @@
             toggle_button.classList.toggle("active");
         });
 
+        const facebookBtn = document.querySelector(".sm.facebook");
+        const twitterBtn = document.querySelector(".sm.twitter");
+        const linkedinBtn = document.querySelector(".sm.linkedin");
+
+        let postUrl = encodeURI(document.location.href);
+        let postTitle = encodeURI("Hi everyone, please check this out: ");
+        facebookBtn.setAttribute(
+            "href",
+            `https://www.facebook.com/sharer.php?u=${postUrl}`
+        );
+
+        twitterBtn.setAttribute(
+            "href",
+            `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
+        );
+
+        linkedinBtn.setAttribute(
+            "href",
+            `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
+        );
     </script>
 
 </html>
